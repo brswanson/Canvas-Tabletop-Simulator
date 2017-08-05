@@ -1,0 +1,77 @@
+﻿@using WarmaHordes.Models
+@model UserProfileViewModel
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@{
+    Layout = "~/Views/Shared/_LayoutAnonymous.cshtml";
+}
+
+@if (Model != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <img id="imgAvatar" src="@Model.ProfileImage" alt="User Profile Picture" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>@Model.Name</h2>
+                <div>
+                    <div><b>Email</b></div>
+                    <div>@Model.EmailAddress</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    <div class="container">
+        <h2>Tokens</h2>
+        <div class="row">
+            @if (ViewBag.Message != null)
+            {
+                <div class="pull-right"><h4>@ViewBag.Message</h4></div>
+            }
+        </div>
+        <div class="row">
+            @using (Html.BeginForm("Token", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                @*
+                    <input type="submit" class="btn btn-primary pull-right pad-button" ng-click="importExport.handleSubmitClicked()" ng-disabled="!importExport.isFilePopulated" ng-show="importExport.isUploadVisible" title="Upload" value="Upload">
+                    <input class="pull-right" ng-show="importExport.isChooseFileVisible" type="file" name="file" id="file" accept="image/*" custom-on-change="importExport.uploadFile" />
+                *@
+                <input type="submit" class="btn btn-primary pull-right" title="Upload" value="Upload">
+                <input class="pull-right" type="file" name="file" id="file" accept="image/*" />
+            }
+        </div>
+        <div class="row">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-4"><h4>Name</h4></div>
+                        <div class="col-md-2"><h4>Type</h4></div>
+                        <div class="col-md-4"><h4>Preview</h4></div>
+                    </div>
+                </li>
+                @foreach (TokenViewModel token in ViewBag.Tokens)
+                {
+                    <li class="list-group-item list-group-item-info" id="@token.Id">
+                        <div class="row">
+                            <div class="col-md-4">@token.Name</div>
+                            <div class="col-md-2">@token.Type</div>
+                            <div class="col-md-4"><img class="img-circle" style="height:20%; width:20%;" src="@token.ImageUri" alt="Token Preview" /></div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <h3>You are not logged in</h3>
+}

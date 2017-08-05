@@ -1,0 +1,102 @@
+﻿.technologies{
+    padding-top: 1.25em;
+}
+
+.company {
+    padding-bottom: 1em;
+}
+
+.company .location {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.company .address {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.company .year {
+    font-size: 1.2em;
+}
+
+.company .title {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.company .description {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+body {
+    font-family: tahoma;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Set padding to display errors that occur during databinding */
+.padding-error {
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .nofloat {
+        float: none;
+        padding: 10px 15px;
+    }
+}
+
+canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    top: 3px;
+}
+
+.toolbox {
+    border: 2px solid #000000;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.rollBadge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #c92222;
+    border-radius: 10px;
+}

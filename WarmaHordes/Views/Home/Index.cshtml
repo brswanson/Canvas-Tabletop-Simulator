@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Tabletop";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    @Scripts.Render("~/bundles/canvas")
+
+    <div id="divCanvas">
+        <canvas id="cBot" style="z-index: 1;" oncontextmenu="return false;">
+            Your browser does not support HTML5 Canvas. =(
+        </canvas>
+        <canvas id="cMid" style="z-index: 2;" oncontextmenu="return false;">
+            Your browser does not support HTML5 Canvas. =(
+        </canvas>
+        <canvas id="cTop" tabindex="1" style="z-index: 3; border:solid 2px;" oncontextmenu="return false;">
+            Your browser does not support HTML5 Canvas. =(
+        </canvas>
+    </div>
+</body>
+</html>
