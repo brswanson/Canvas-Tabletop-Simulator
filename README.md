@@ -13,3 +13,5 @@ This was mostly to explore the viability of simulating a tabletop board on the w
 
 ### Cons/To Do
 - Separate users by  game instances. Right now, all board movements, token creation/deletion, chat and dice rolls occur for everyone using the application.
+
+- Separate temp token files by game. Generate an individual semi-permanent token storage per game instead of pulling all relevant tokens for each game into a same folder.
