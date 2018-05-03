@@ -57,7 +57,7 @@ namespace WarmaHordes.Services
 
         public IEnumerable<TokenViewModel> GetGameTokens(string gameId)
         {
-            var games = (IEnumerable<GameItem>)GameTableStorageService.GetItemsById(gameId);
+            var games = (IEnumerable<GameItem>) GameTableStorageService.GetItemsById(gameId);
             var gameUserIds = games.Select(c => c.UserId);
             var tokens = GetUserTokens(gameUserIds, true);
 
@@ -80,7 +80,7 @@ namespace WarmaHordes.Services
         private void SaveTokenToTemp(FileItem token)
         {
             var filePath = HttpRuntime.AppDomainAppPath + @"\Temp\" + token.FileGuid + ".jpg";
-            if (File.Exists(filePath)) { return; }
+            if (File.Exists(filePath)) return;
 
             // Save the file if it isn't in our temp already
             var stream = BlobStorageService.GetContentsFromStorageStreamed(token.FileGuid.ToString());

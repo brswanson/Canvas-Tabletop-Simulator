@@ -17,7 +17,7 @@ namespace WarmaHordes.Common
 
         public static string GetStringSha256Hash(string text)
         {
-            if (string.IsNullOrEmpty(text)) { return string.Empty; }
+            if (string.IsNullOrEmpty(text)) return string.Empty;
 
             using (var sha = new SHA256Managed())
             {

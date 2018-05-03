@@ -25,14 +25,11 @@ namespace WarmaHordes.Services
 
         public async Task<object> AddItem(string id, string name, string userName, string userToken)
         {
-            if (id == null) { return null; }
+            if (id == null) return null;
 
             try
             {
-                if (string.IsNullOrEmpty(userName))
-                {
-                    userName = CommonValues.SystemValues.System;
-                }
+                if (string.IsNullOrEmpty(userName)) userName = CommonValues.SystemValues.System;
 
 
                 var encodedUserToken = Functions.GetStringSha256Hash(userToken);
@@ -97,7 +94,7 @@ namespace WarmaHordes.Services
             var retrieveOperation = TableOperation.Retrieve<GameItem>(partitionKey, rowKey);
             var retrievedResult = await FileTable.ExecuteAsync(retrieveOperation);
 
-            return (GameItem)retrievedResult.Result;
+            return (GameItem) retrievedResult.Result;
         }
 
         public IEnumerable<object> GetItemsById(string id)
@@ -113,10 +110,7 @@ namespace WarmaHordes.Services
             userId = Functions.GetStringSha256Hash(userId);
 
             // Only get items where the User token matches; if no token is specified don't execute the query and instead return nothing
-            if (string.IsNullOrEmpty(userId))
-            {
-                return new List<GameItem>().AsQueryable();
-            }
+            if (string.IsNullOrEmpty(userId)) return new List<GameItem>().AsQueryable();
 
             var query = new TableQuery<GameItem>();
             var items = FileTable.ExecuteQuery(query).AsQueryable();
@@ -129,12 +123,9 @@ namespace WarmaHordes.Services
 
         public async Task<bool> AddUserToGame(string userToken, string gameId)
         {
-            var userGames = (IEnumerable<GameItem>)GetItemsByUserId(userToken);
+            var userGames = (IEnumerable<GameItem>) GetItemsByUserId(userToken);
 
-            if (!userGames.Select(c => c.Id).Contains(gameId))
-            {
-                await AddItem(gameId, "name", "userName", userToken);
-            }
+            if (!userGames.Select(c => c.Id).Contains(gameId)) await AddItem(gameId, "name", "userName", userToken);
 
             return true;
         }

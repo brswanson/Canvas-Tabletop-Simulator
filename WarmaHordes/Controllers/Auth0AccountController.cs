@@ -22,10 +22,8 @@ namespace WarmaHordes.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
             // Should only occur if the Auth0 account is misconfigured for this app's environment
-            var externalIdentity =
-                await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
-            if (externalIdentity == null)
-                throw new Exception("Application is not configured to interact with Auth0 correctly");
+            var externalIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+            if (externalIdentity == null) throw new Exception("Application is not configured to interact with Auth0 correctly");
 
             // Authenticate the user
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = false }, CreateIdentity(externalIdentity));

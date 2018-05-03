@@ -14,7 +14,8 @@ namespace WarmaHordes.SignalRHubs
         private const int DiceRollsMax = 5;
 
         /// <summary>
-        /// Updates clients with log messages. Sends to all clients and the sender so all messages are affected by latency equally.
+        ///     Updates clients with log messages. Sends to all clients and the sender so all messages are affected by latency
+        ///     equally.
         /// </summary>
         /// <param name="message"></param>
         [HubMethodName("send")]
@@ -24,16 +25,15 @@ namespace WarmaHordes.SignalRHubs
         }
 
         /// <summary>
-        /// Update clients with dice roll results. Accepts any integer, but only rolls up to five (5) dice at a time.
+        ///     Update clients with dice roll results. Accepts any integer, but only rolls up to five (5) dice at a time.
         /// </summary>
         /// <param name="diceCount"></param>
         [HubMethodName("roll")]
         public void Roll(int diceCount)
         {
-            if (diceCount <= 0) { return; }
+            if (diceCount <= 0) return;
 
-            if (diceCount > DiceRollsMax)
-                diceCount = DiceRollsMax;
+            if (diceCount > DiceRollsMax) diceCount = DiceRollsMax;
 
             var total = 0;
             var rand = new Random(Environment.TickCount);
@@ -59,7 +59,7 @@ namespace WarmaHordes.SignalRHubs
             sb.Append(user + ": ");
             sb.Append(diceCount == 1 ? $"{diceCount} die rolled" : $"{diceCount} dice rolled");
             sb.Append($" for a total of {total}. ");
-            sb.Append($"Average roll of {Math.Round((double)total / diceCount, 2)}. ");
+            sb.Append($"Average roll of {Math.Round((double) total / diceCount, 2)}. ");
             sb.Append($"Rolls: {string.Join(", ", rolls)}");
 
             return sb.ToString();

@@ -1248,6 +1248,7 @@ function canvasDistance(pointA, pointB) {
 Number.prototype.round = function (places) {
     return +(Math.round(this + "e+" + places) + "e-" + places);
 };
+
 window.onload = function () {
     init();
 };

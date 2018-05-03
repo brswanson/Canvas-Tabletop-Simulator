@@ -6,8 +6,6 @@ namespace WarmaHordes.Filters
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            var userInfo = filterContext.Controller.ViewBag.UserInfo;
-            var debug = string.Empty;
         }
     }
 }
