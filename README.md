@@ -1,5 +1,5 @@
 # Canvas-Tabletop-Simulator
-Tabletop board simulator using HTML5 canvas and JS/jQuery for the board with a C# .NET and Azure table/blob storage back-end. SignalR handles communication between users/clients.
+Tabletop board game simulator using HTML5 canvas and JS/jQuery for the board with a C# .NET and Azure table/blob storage back-end. SignalR handles communication between users/clients.
 
 ## About
 This was mostly to explore the viability of simulating a tabletop board on the web with just canvas, JS, and a light back-end. I started work on it after I got into Warmachine/Hordes and wished I had an easier way to play with remote friends. For anyone else looking for that fix, Vassal and Tabletop Simulator on Steam are solid choices.
