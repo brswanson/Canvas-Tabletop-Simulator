@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+// ReSharper disable UnusedMember.Global // Note: These methods are called via front end JS SignalR hubs
 
 namespace WarmaHordes.SignalRHubs
 {
